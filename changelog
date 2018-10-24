@@ -1,3 +1,10 @@
+slurm-llnl (18.08.2-1fhcrc0) xenial; urgency=medium
+
+  * New upstream version
+  * reverting to original package naming convention
+
+ -- Michael Gutteridge <mrg@fredhutch.org>  Wed, 24 Oct 2018 14:54:00 -0700
+
 slurm-llnl (18.08.1-1fhcrc0~ubuntu16.04) xenial; urgency=medium
 
   * New upstream version
