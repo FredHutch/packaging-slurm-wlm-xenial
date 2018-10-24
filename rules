@@ -10,7 +10,7 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all,-bindnow
 include /usr/share/dpkg/architecture.mk
 
 %:
-	dh $@ --builddirectory --parallel
+	dh $@ --builddirectory --parallel --with systemd
 
 override_dh_auto_clean:
 	dh_auto_clean
@@ -23,8 +23,8 @@ override_dh_auto_clean:
 # Notice that -g in CFLAGS is still provided by dpkg-buildflags
 override_dh_auto_configure:
 	dh_autoreconf
-	dh_auto_configure -- --sysconfdir=/etc/slurm-llnl --localstatedir=/var/run/slurm-llnl --with-munge --without-blcr --enable-pam --without-rpath --disable-debug --enable-multiple-slurmd --enable-x11
-	dh_auto_configure --builddirectory build-emulator -- -sysconfdir=/etc/slurm-llnl --localstatedir=/var/run/slurm-llnl --with-munge --without-blcr --enable-pam --without-rpath --disable-debug --enable-front-end --enable-multiple-slurmd --enable-x11
+	dh_auto_configure -- --sysconfdir=/etc/slurm-llnl --localstatedir=/var/run/slurm-llnl --with-munge --without-blcr --enable-pam --without-rpath --disable-debug --enable-multiple-slurmd
+	dh_auto_configure --builddirectory build-emulator -- -sysconfdir=/etc/slurm-llnl --localstatedir=/var/run/slurm-llnl --with-munge --without-blcr --enable-pam --without-rpath --disable-debug --enable-front-end --enable-multiple-slurmd
 
 override_dh_auto_build:
 	dh_auto_build
@@ -99,9 +99,8 @@ override_dh_auto_install:
 	mv debian/tmp-emulator/usr/bin/sstat	debian/tmp-emulator/usr/bin/sstat-emulator
 
 override_dh_strip:
-	dh_strip -plibslurm32 --dbg-package=libslurm32-dbg
-	dh_strip -plibslurmdb32 --dbg-package=libslurmdb32-dbg
-	dh_strip -plibpmi0 --dbg-package=libpmi0-dbg
+	dh_strip -plibslurm33 --dbg-package=libslurm33-dbg
+	dh_strip -plibslurmdb33 --dbg-package=libslurmdb33-dbg
 	dh_strip -plibpmi2-0 --dbg-package=libpmi2-0-dbg
 	dh_strip -pslurm-wlm-basic-plugins --dbg-package=slurm-wlm-basic-plugins-dbg
 	dh_strip -pslurm-client --dbg-package=slurm-client-dbg
@@ -115,7 +114,6 @@ override_dh_strip:
 	dh_strip -plibpam-slurm
 	dh_strip -pslurm-wlm-emulator
 	dh_strip -pslurm-client-emulator
-	dh_strip -plibpmi0-dev
 	dh_strip -plibpmi2-0-dev
 	dh_strip -plibslurmdb-dev
 	dh_strip -plibslurm-dev
