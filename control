@@ -124,16 +124,6 @@ Description: Runtime library files for SLURM
  is an open-source cluster resource management and job scheduling.
  This package contains the SLURM runtime library.
 
-Package: libpmi0
-Section: libs
-Architecture: any
-Pre-Depends: ${misc:Pre-Depends}
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: SLURM PMI library implementation
- SLURM, the Simple Linux Utility for Resource Management,
- is an open-source cluster resource management and job scheduling.
- This package contains the SLURM PMI runtime implementation.
-
 Package: libpmi2-0
 Section: libs
 Architecture: any
@@ -405,7 +395,6 @@ Priority: extra
 Architecture: any
 Section: debug
 Depends:
- libpmi0 (= ${binary:Version}),
  ${misc:Depends}
 Description: debugging symbols for SLURM PMI2 library implementation
  SLURM stands for Simple Linux Utility for Resource Management, it
