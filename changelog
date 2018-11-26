@@ -1,3 +1,9 @@
+slurm-llnl (18.08.3-1fhcrc1) xenial; urgency=medium
+
+  * New upstream release
+
+ -- Michael Gutteridge <mrg@fredhutch.org>  Mon, 26 Nov 2018 13:36:07 -0800
+
 slurm-llnl (18.08.2-1fhcrc1) xenial; urgency=medium
 
   * removed libpmi0 for libpmi2
